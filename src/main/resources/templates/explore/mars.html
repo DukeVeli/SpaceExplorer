@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<th:block th:include="~{_shared/head}"/>
+<body>
+
+<main>
+    <div class="container">
+        <h1>Mars</h1>
+        <hr class="my-3"/>
+
+        <img src="../../img/explore/mars.jpg" alt="Mars" style="width:65%;">
+        <p class="h5">Mars is the fourth planet from the Sun and the second-smallest planet in the Solar System after
+            Mercury. In English, Mars carries a name of the Roman god of war and is often referred to as the 'Red
+            Planet'. The latter refers to the effect of the iron oxide prevalent on Mars' surface, which gives
+            it a reddish appearance distinctive among the astronomical bodies visible to the naked eye. Mars is a
+            terrestrial planet with a thin atmosphere, having surface features reminiscent both of the impact craters of
+            the Moon and the valleys, deserts, and polar ice caps of Earth.</p>
+
+        <a href="/explore/earth" class="previous">&laquo; Earth</a>&emsp;&emsp;
+        <a href="/explore/home">Solar System</a>&emsp;&emsp;
+        <a href="/explore/jupiter" class="next">Jupiter &raquo;</a>
+        <hr class="my-3"/>
+
+    </div>
+</main>
+<th:block th:include="~{_shared/footer}"/>
+</body>
+</html>

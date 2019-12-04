@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html
+        lang="en"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org"
+>
+<th:block th:include="~{_shared/head}"/>
+<body>
+
+<main>
+    <div class="container">
+
+        <h1>The Solar System</h1>
+        <hr class="my-3"/>
+
+        <img src="../../img/explore/system.jpg" alt="Solar System" style="width:65%;">
+        <h5>
+        <a href="/explore/sun">Sun</a>&emsp;
+        <a href="/explore/mercury">Mercury</a>&emsp;
+        <a href="/explore/venus">Venus</a>&emsp;
+        <a href="/explore/earth">Earth</a>&emsp;
+        <a href="/explore/moon">Moon</a>&emsp;
+        <a href="/explore/mars">Mars</a>&emsp;
+        <a href="/explore/jupiter">Jupiter</a>&emsp;
+        <a href="/explore/saturn">Saturn</a>&emsp;
+        <a href="/explore/uranus">Uranus</a>&emsp;
+        <a href="/explore/neptune">Neptune</a>&emsp;
+        <a href="/explore/pluto">Pluto</a>&emsp;
+        </h5>
+        <p class="h7">The Solar System is the gravitationally bound system of the Sun and the objects that orbit it,
+            either directly or indirectly. Of the objects that orbit the Sun directly, the largest are the eight
+            planets, with the remainder being smaller objects, the dwarf planets and small Solar System bodies. Of
+            the objects that orbit the Sun indirectly—the moons—two are larger than the smallest planet, Mercury.
+
+            The Solar System formed 4.6 billion years ago from the gravitational collapse of a giant interstellar
+            molecular cloud. The vast majority of the system's mass is in the Sun, with the majority of the remaining
+            mass contained in Jupiter. The four smaller inner planets, Mercury, Venus, Earth and Mars, are terrestrial
+            planets, being primarily composed of rock and metal. The four outer planets are giant planets, being
+            substantially more massive than the terrestrials. The two largest, Jupiter and Saturn, are gas giants, being
+            composed mainly of hydrogen and helium; the two outermost planets, Uranus and Neptune, are ice giants, being
+            composed mostly of substances with relatively high melting points compared with hydrogen and helium, called
+            volatiles, such as water, ammonia and methane. All eight planets have almost circular orbits that lie within
+            a nearly flat disc called the ecliptic. </p>
+
+        <h3><a href="/users/login">Log In</a></h3>
+        <hr class="my-3"/>
+    </div>
+</main>
+<th:block th:include="~{_shared/footer}"/>
+</body>
+</html>

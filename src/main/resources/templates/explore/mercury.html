@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<th:block th:include="~{_shared/head}"/>
+<body>
+
+<main>
+    <div class="container">
+        <h1>Mercury</h1>
+        <hr class="my-3"/>
+
+        <img src="../../img/explore/mercury.jpg" alt="Mercury" style="width:70%;">
+        <p class="h5">Mercury is the smallest and innermost planet in the Solar System. Its orbit around the Sun takes
+            only 87.97 days, the shortest of all the planets in the Solar System. It is named after the Roman deity
+            Mercury, the messenger of the gods. </p>
+
+        <a href="/explore/sun" class="previous">&laquo; Sun</a>&emsp;&emsp;
+        <a href="/explore/home">Solar System</a>&emsp;&emsp;
+        <a href="/explore/venus" class="next">Venus &raquo;</a>
+        <hr class="my-3"/>
+
+    </div>
+</main>
+<th:block th:include="~{_shared/footer}"/>
+</body>
+</html>

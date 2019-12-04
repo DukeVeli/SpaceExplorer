@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<th:block th:include="~{_shared/head}"/>
+<body>
+
+<main>
+    <div class="container">
+        <h1>Earth</h1>
+        <hr class="my-3"/>
+
+        <img src="../../img/explore/earth.jpg" alt="Earth" style="width:75%;">
+        <p class="h5">Earth is the third planet from the Sun and the only astronomical object known to harbor life.
+            According to radiometric dating and other sources of evidence, Earth formed over 4.5 billion years ago.
+            Earth's gravity interacts with other objects in space, especially the Sun and the Moon, which is Earth's
+            only natural satellite. Earth orbits around the Sun in 365.265 days, a period known as an Earth sidereal
+            year. During this time, Earth rotates about its axis about 366.265 times.</p>
+
+        <h5><a href="/explore/moon" class="previous">&#8648; Moon</a></h5>
+
+        <a href="/explore/venus" class="previous">&laquo; Venus</a>&emsp;&emsp;
+        <a href="/explore/home">Solar System</a>&emsp;&emsp;
+        <a href="/explore/mars" class="next">Mars &raquo;</a>
+        <hr class="my-3"/>
+
+    </div>
+</main>
+<th:block th:include="~{_shared/footer}"/>
+</body>
+</html>

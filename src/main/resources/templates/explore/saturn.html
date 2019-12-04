@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<th:block th:include="~{_shared/head}"/>
+<body>
+
+<main>
+    <div class="container">
+        <h1>Saturn</h1>
+        <hr class="my-3"/>
+
+        <img src="../../img/explore/saturn.jpg" alt="Saturn" style="width:65%;">
+        <p class="h5">Saturn is the sixth planet from the Sun and the second-largest in the Solar System, after Jupiter.
+            It is a gas giant with an average radius about nine times that of Earth. It has only one-eighth the
+            average density of Earth; however, with its larger volume, Saturn is over 95 times more massive.
+            Saturn is named after the Roman god of wealth and agriculture; its astronomical symbol (♄) represents the
+            god's sickle.</p>
+
+        <a href="/explore/jupiter" class="previous">&laquo; Jupiter</a>&emsp;&emsp;
+        <a href="/explore/home">Solar System</a>&emsp;&emsp;
+        <a href="/explore/uranus" class="next">Uranus &raquo;</a>
+        <hr class="my-3"/>
+
+    </div>
+</main>
+<th:block th:include="~{_shared/footer}"/>
+</body>
+</html>
