@@ -1,10 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+<header>
+    <nav class="navbar bg-dark navbar-expand-lg navbar-background bg-dark ">
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
+            <ul class="navbar-nav row">
+
+                    <th:block>
+                        <li class="nav-item mr-2">
+                            <a class="nav-link text-white active h5" href="/planet/travel">Travel</a>
+                        </li>
+                        <li class="nav-item mr-2">
+                            <a class="nav-link text-white active h5" href="/account/manage">Manage Credit Account</a>
+                        </li>
+                        <li class="nav-item mr-2">
+                            <a class="nav-link text-white active h5"
+                               th:href="@{'/planet/details/' + ${session.user.planetName}}">Planet</a>
+                        </li>
+                        <li class="nav-item mr-2">
+                            <a class="nav-link text-white active h5" href="/users/profile">Profile</a>
+                        </li>
+                        <li class="nav-item mr-2">
+                            <form th:action="@{/users/logout}" method="post">
+                                <button class="nav-link text-white active h5" type="submit">Logout</button>
+                            </form>
+                        </li>
+                    </th:block>
+            </ul>
+        </div>
+    </nav>
+</header>

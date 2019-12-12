@@ -1,4 +1,7 @@
 package space.space.services.factories;
 
-public class CreditAccountFactory {
+import space.space.data.models.CreditAccount;
+
+public interface CreditAccountFactory {
+    CreditAccount create();
 }

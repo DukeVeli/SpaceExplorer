@@ -1,4 +1,7 @@
 package space.space.services.factories;
 
-public class PlanetFactory {
+import space.space.data.models.Planet;
+
+public interface  PlanetFactory {
+    Planet create(String name);
 }

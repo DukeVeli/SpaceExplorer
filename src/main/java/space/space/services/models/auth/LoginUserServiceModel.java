@@ -1,4 +1,4 @@
-package space.space.services.models.accounts;
+package space.space.services.models.auth;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

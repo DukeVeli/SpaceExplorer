@@ -1,4 +1,5 @@
 package space.space.services.services;
 
-public class HashingService {
+public interface HashingService {
+    String hash(String str);
 }
