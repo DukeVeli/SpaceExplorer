@@ -13,6 +13,8 @@ import space.space.data.repositories.UserRepository;
 import space.space.services.factories.PlanetFactory;
 import space.space.services.models.planets.PlanetServiceModel;
 import space.space.services.services.PlanetService;
+import space.space.services.services.UsersService;
+
 import java.util.Optional;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -23,6 +25,8 @@ public class PlanetServiceImpl implements PlanetService {
     private final PlanetRepository planetRepository;
     private final UserRepository userRepository;
     private final PlanetFactory planetFactory;
+    private final UsersService usersService;
+
     private final ModelMapper mapper;
 
     @Override
@@ -78,11 +82,11 @@ public class PlanetServiceImpl implements PlanetService {
     }
 
     @Override
-    public void sizeUpPlanet(String name) {
-        Planet planet = planetRepository.getByUserUsername(name).get();
+    public void sizeUpPlanet(Planet planet)  {
+
         if (planet.getSize().equals(PlanetSize.ENORMOUS)){
             return;
-        }else {
+        }
             if (planet.getSize().equals(PlanetSize.HUGE)){
                 planet.setSize(PlanetSize.ENORMOUS);
                 planet.setIncomePerTrip(planet.getIncomePerTrip()+800);
@@ -96,16 +100,52 @@ public class PlanetServiceImpl implements PlanetService {
                 planet.setSize(PlanetSize.MEDIUM);
                 planet.setIncomePerTrip(planet.getIncomePerTrip()+100);
             }
-        }
+        
 
-        planetRepository.save(planet);
+        planetRepository.saveAndFlush(planet);
+
+    }
+
+
+    @Override
+    public boolean checkBalance(String username, double baseCost) {
+        //TODO
+        User user = userRepository.findByUsername(username);
+        return (user.getCreditAccount().getCreditAmount()>=baseCost);
+    }
+
+    @Override
+    public void buySizeUp(String username) throws Exception {
+        Optional<Planet> oPlanet = planetRepository.getByUserUsername(username);
+        if (oPlanet.isEmpty()){
+            throw new Exception("No Planet");
+        }
+        Planet planet = oPlanet.get();
+        if (!checkBalance(username,100000)){
+           throw new Exception("nemash kinti braat");
+        }
+            sizeUpPlanet(planet);
+            usersService.spendMoney(username,100000);
 
     }
 
     @Override
-    public void levelUpPlanet(String name) {
-        Planet planet = planetRepository.getByUserUsername(name).get();
-        if (planet.getUpgrades().equals(PlanetUpgrades.FORTH)){
+    public void buylevelUp(String username) throws Exception {
+        Optional<Planet> oPlanet = planetRepository.getByUserUsername(username);
+        if (oPlanet.isEmpty()){
+            throw new Exception("No Planet");
+        }
+        Planet planet = oPlanet.get();
+        if (checkBalance(username,50000)){
+            levelUpPlanet(planet);
+            usersService.spendMoney(username,50000);
+        }
+
+    }
+
+    @Override
+    public void levelUpPlanet(Planet planet) throws Exception {
+             if (planet.getUpgrades().equals(PlanetUpgrades.FORTH)){
             return;
         }else {
             if (planet.getUpgrades().equals(PlanetUpgrades.THIRD)){
@@ -117,12 +157,12 @@ public class PlanetServiceImpl implements PlanetService {
             }else if (planet.getUpgrades().equals(PlanetUpgrades.FIRST)){
                 planet.setUpgrades(PlanetUpgrades.SECOND);
                 planet.setIncomePerTrip(planet.getIncomePerTrip()+50);
-            }else if (planet.getUpgrades().equals(PlanetUpgrades.EMPTY)){
+            }else {
                 planet.setUpgrades(PlanetUpgrades.FIRST);
                 planet.setIncomePerTrip(planet.getIncomePerTrip()+50);
             }
         }
-        planetRepository.save(planet);
+        planetRepository.saveAndFlush(planet);
     }
 
     @Override

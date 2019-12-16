@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html   lang="en"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org">
+
+<th:block th:include="~{_shared/head}"/>
+
+<body>
+<th:block th:include="~{_shared/header}"/>
+
+<main>
+    <div class="container">
+        <h3> &#128640;</h3>
+
+        <p class="h3">
+        <h2>Planet Name [[${session.planet.getName()}]]!</h2>
+        <h3> &#128640;</h3>
+        <p class="h3">Planet Size [[${session.planet.getSize().toString()}]]!</p>
+        <p class="h3">
+            <th:block th:switch="${session.planet.getSize().toString()}">
+                <img th:case="'SMALL'" src="../../img/planet/SMALL.jpg" alt="small"
+                     class="align-middle" width="60"/>
+                <img th:case="'MEDIUM'" src="../../img/planet/MEDIUM.jpg" alt="medium"
+                     class="align-middle"width="75"/>
+                <img th:case="'LARGE'" src="../../img/planet/LARGE.jpg" alt="LARGE"
+                     class="align-middle"width="90"/>
+                <img th:case="'HUGE'" src="../../img/planet/HUGE.jpg" alt="HUGE"
+                     class="align-middle"width="105"/>
+                <img th:case="'ENORMOUS'" src="../../img/planet/ENORMOUS.jpg" alt="ENORMOUS"
+                     class="align-middle"width="120"/>
+            </th:block>
+            <th:block th:unless="${session.planet.getSize().toString().equals('ENORMOUS')}">
+                <a class="btn btn-success" th:href="@{/planet/my_planet/sizeUp}"> Upgrade</a>to next size. Cost 100000.
+            </th:block>
+        </p>
+        <h3> &#128640;</h3>
+        <p class="h3">Planet Upgrade level [[${session.planet.getUpgrades().toString().toLowerCase()}]]!</p>
+        <p class="h3">
+
+            <th:block th:unless="${session.planet.getUpgrades().toString().equals('FORTH')}">
+                <a class="btn btn-success" th:href="@{/planet/my_planet/levelUp}"> Upgrade</a>to next upgrade level. Cost 50000.
+            </th:block>
+
+        </p>
+        <h3> &#128640;</h3>
+
+        <p class="h3">Your rating is [[${session.planet.getRating()}]]!</p>
+
+        <h3> &#128640;</h3>
+        <p class="h3">Your Income per trip is [[${session.planet.getIncomePerTrip()}]]!</p>
+
+        <p class="h3">
+        <p class="h5">Good luck commander.
+            Base income is 100. Upgrading planet size doubles base income. Upgrading planet level adds 50 income. Each rating point add 1 credit per trip</p>
+        <h3> &#128640;</h3>
+
+    </div>
+</main>
+<th:block th:include="~{_shared/footer}"/>
+</body>
+</html>

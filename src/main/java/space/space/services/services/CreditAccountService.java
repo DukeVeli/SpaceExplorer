@@ -1,7 +1,6 @@
 package space.space.services.services;
 
 import space.space.data.models.CreditAccount;
-import space.space.data.models.CreditType;
 import space.space.data.models.User;
 import space.space.services.models.creditAccount.CreditAccountServiceModel;
 

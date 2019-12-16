@@ -31,9 +31,7 @@ public class CreditAccountController extends BaseController {
     @PostMapping("/add")
     public String addCredits(@ModelAttribute CreditAddModel model,HttpSession session) {
         CreditAccountServiceModel mod = mapper.map(model,CreditAccountServiceModel.class);
-        session.setAttribute("username",mod.getUserName());
-
-        String username = mod.getUserName();
+        String username = getUsername(session);
         creditAccountService.add(mod,username);
 
         return "redirect:/account/manage";

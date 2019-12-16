@@ -6,6 +6,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import space.space.data.models.CreditAccount;
 import space.space.data.models.User;
 import space.space.data.repositories.CreditAccountRepository;
 import space.space.data.repositories.PlanetRepository;
@@ -15,16 +16,14 @@ import space.space.services.services.PlanetService;
 import space.space.services.services.UsersService;
 
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 @Service
 @AllArgsConstructor
 public class UsersServiceImpl implements UsersService {
     private final UserRepository userRepository;
-    private final PlanetRepository planetRepository;
     private final CreditAccountRepository creditAccountRepository;
-    private final PlanetService planetService;
-    private final CreditAccountService creditAccountService;
     private final ModelMapper mapper;
 
     /*@Override
@@ -58,5 +57,27 @@ public class UsersServiceImpl implements UsersService {
                 user.getPassword(),
                 authorities
         );
+    }
+
+    @Override
+    public void spendMoney(String username, double spentPot) throws Exception {
+        Optional<CreditAccount> optionalCreditAccount= creditAccountRepository.getByUserUsername(username);
+       if (optionalCreditAccount.isEmpty()) {
+           throw new Exception("No such Username");
+       }
+        CreditAccount account = optionalCreditAccount.get();
+       account.setCreditAmount(account.getCreditAmount()-spentPot);
+       creditAccountRepository.save(account);
+    }
+
+    @Override
+    public void earnMoney(String username, double spentPot) throws Exception {
+        Optional<CreditAccount> optionalCreditAccount= creditAccountRepository.getByUserUsername(username);
+        if (optionalCreditAccount.isEmpty()) {
+            throw new Exception("No such Username");
+        }
+        CreditAccount account = optionalCreditAccount.get();
+        account.setCreditAmount(account.getCreditAmount()+spentPot);
+        creditAccountRepository.save(account);
     }
 }

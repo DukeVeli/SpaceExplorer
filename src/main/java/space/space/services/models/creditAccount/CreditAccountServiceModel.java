@@ -11,5 +11,5 @@ import space.space.data.models.CreditType;
 public class CreditAccountServiceModel {
     private long creditAmount;
     private CreditType creditType;
-    private String userName;
+    private String username;
 }

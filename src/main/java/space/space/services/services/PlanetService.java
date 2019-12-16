@@ -20,8 +20,13 @@ public interface PlanetService {
 
     void travelToPlanet(String myPlanet, String otherPlanet);
 
-    void sizeUpPlanet(String name);
-    void levelUpPlanet(String name);
+    void sizeUpPlanet(Planet planet) throws Exception;
+    void levelUpPlanet(Planet planet) throws Exception;
+
+    boolean checkBalance(String username, double baseCost);
+
+    void buySizeUp(String username) throws Exception;
+    void buylevelUp(String username) throws Exception;
 
 
     boolean areTherePlanets();
