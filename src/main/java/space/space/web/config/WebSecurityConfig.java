@@ -11,7 +11,6 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import space.space.services.services.UsersService;
 import space.space.web.filters.UserAuthenticationSuccessHandler;
 
@@ -24,7 +23,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     private UsersService usersService;
 
     @Autowired
-    private AuthenticationSuccessHandler authenticationSuccessHandler;
+    private UserAuthenticationSuccessHandler authenticationSuccessHandler;
 
     private PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
@@ -55,7 +54,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .usernameParameter("username")
                 .passwordParameter("password")
                 .successForwardUrl("/user/profile")
-                /*.successHandler(authenticationSuccessHandler)*/
+                .successHandler(authenticationSuccessHandler)
                 .and()
                 .logout()
                 .logoutSuccessUrl("/");

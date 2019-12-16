@@ -4,7 +4,6 @@ import org.springframework.security.web.DefaultRedirectStrategy;
 import org.springframework.security.web.RedirectStrategy;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
-import space.space.services.models.planets.PlanetDetailsServiceModel;
 import space.space.services.models.planets.PlanetServiceModel;
 import space.space.services.services.AuthenticatedUserService;
 import space.space.services.services.PlanetService;
@@ -39,6 +38,6 @@ public class UserAuthenticationSuccessHandler implements AuthenticationSuccessHa
             // do nothing
         }
 
-        redirectStrategy.sendRedirect(httpServletRequest, httpServletResponse, "/home");
+        redirectStrategy.sendRedirect(httpServletRequest, httpServletResponse, "/user/profile");
     }
 }

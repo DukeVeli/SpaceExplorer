@@ -2,9 +2,7 @@ package space.space.services.services.impl;
 
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Service;
-import space.space.data.models.Role;
 import space.space.data.models.User;
 import space.space.data.repositories.RoleRepository;
 import space.space.data.repositories.UserRepository;
@@ -15,7 +13,6 @@ import space.space.services.services.validation.AuthValidationService;
 
 import java.util.Collections;
 
-import static space.space.data.models.Roles.ROLE_ADMIN;
 import static space.space.data.models.Roles.ROLE_USER;
 
 @Service
@@ -25,7 +22,6 @@ public class AuthServiceImpl implements AuthService {
     private final UserRepository userRepository;
     private final ModelMapper mapper;
     private final HashingService hashingService;
-    private final UsersService usersService;
     private final PlanetService planetService;
     private final CreditAccountService creditAccountService;
     private final RoleRepository roleRepository;
@@ -40,15 +36,15 @@ public class AuthServiceImpl implements AuthService {
         User user = mapper.map(model, User.class);
         user.setPlanet(null);
         user.setPassword(hashingService.hash(user.getPassword()));
-         user.setAuthorities(Collections.singleton(roleRepository.findByAuthority(ROLE_USER.toString())));
+        user.setAuthorities(Collections.singleton(roleRepository.findByAuthority(ROLE_USER.toString())));
         user = userRepository.saveAndFlush(user);
-        planetService.create(user);
+        planetService.create(model.getPlanetName(),user);
         creditAccountService.create(user);
 
        /* try {
             usersService.createAccountForUser(user.getUsername());
         } catch (Exception e) {e.printStackTrace();
-*/
+            */
 
        /* try {
             usersService.createPlanetForUser(user.getUsername(),planetService.create(model.getPlanetName()));
@@ -68,7 +64,6 @@ public class AuthServiceImpl implements AuthService {
                     String planetName = user.getPlanet() == null
                             ? null
                             : user.getPlanet().getName();
-
                     return new LoginUserServiceModel(serviceModel.getUsername(), planetName);
                 })
                 .orElseThrow(() -> new Exception("Invalid user"));

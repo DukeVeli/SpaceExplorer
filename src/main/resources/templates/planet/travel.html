@@ -1,10 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<th:block th:include="~{_shared/head}"/>
+
 <body>
-$END$
+<th:block th:include="~{_shared/header}"/>
+
+<main>
+    <div class="container">
+        <h1> &#128640;</h1>
+
+
+        <th:block >
+            <div class="row flex-md-row" th:each="planet : ${planets}">
+                <div class="col text-center">
+                    <img th:src="@{'../../img/planet/' +${planet.getSize} + '.jpg'}" width="100">
+                    <h2 class="text-white" th:text="${planet.name}"></h2>
+                    <a class="btn btn-secondary" th:href="@{'/planet/travel/' + ${planet.name}}">Travel</a>
+                </div>
+            </div>
+        </th:block>
+
+    </div>
+</main>
+<th:block th:include="~{_shared/footer}"/>
 </body>
 </html>

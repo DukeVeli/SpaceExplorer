@@ -13,7 +13,12 @@
         <h1>  	&#128640;&#128640;</h1>
         <h1>  	&#128640;&#128640;&#128640;</h1>
 
+        <th:block th:if="${session.username == null}">
         <h1>Hello Explorer!</h1>
+        </th:block>
+        <th:block th:unless="${session.username == null}">
+            <h1>Hello [[${session.username}]]!</h1>
+        </th:block>
         <hr class="my-3"/>
         <p class="h4">          Welcome to Space.</p>
         <p class="h4">Here you can explore the Solar System.</p>
@@ -21,9 +26,18 @@
         <p class="h4">Good luck commander.</p>
         <hr class="my-3"/>
         <h3><a href="/explore/home">Explore</a> the Solar System</h3>
-        <h3><a href="/auth/login">Log In</a> if you have an account or
-            <a href="/auth/register">Register</a> now and see the space.
-        </h3>
+
+        <th:block th:if="${session.username == null}">
+            <h3><a href="/auth/login">Log In</a> if you have an account or
+                <a href="/auth/register">Register</a> now and see the space.
+            </h3>
+        </th:block>
+
+        <th:block th:unless="${session.username == null}">
+            <h3>Go to <a href="../user/profile">Profile</a></h3>
+        </th:block>
+
+
     </div>
 </main>
 <th:block th:include="~{_shared/footer}"/>

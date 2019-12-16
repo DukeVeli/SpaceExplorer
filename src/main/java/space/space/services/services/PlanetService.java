@@ -10,14 +10,19 @@ import java.util.List;
 
 public interface PlanetService {
 
-    PlanetDetailsServiceModel getByName(String name);
+    Planet create(String name,User user);
 
-    Planet create(User user);
+    PlanetServiceModel getByName(String planetName);
+
+    PlanetServiceModel getByUsername(String username);
 
     List<PlanetServiceModel> getPlanetsToTravel(String planetName);
 
-    void sizeUpPlanet();
-    void upgradePlanet();
+    void travelToPlanet(String myPlanet, String otherPlanet);
 
-    PlanetServiceModel getByUsername(String username);
+    void sizeUpPlanet(String name);
+    void levelUpPlanet(String name);
+
+
+    boolean areTherePlanets();
 }

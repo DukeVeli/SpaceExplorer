@@ -28,6 +28,9 @@ public class Planet extends BaseEntity {
     @Column
     private int incomePerTrip;
 
+    @Column
+    private int rating=0;
+
     @OneToOne
     @JoinColumn(name = "user_id")
     private User user;

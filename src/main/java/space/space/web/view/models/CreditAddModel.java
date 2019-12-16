@@ -1,4 +1,4 @@
-package space.space.web.view.controllers.models;
+package space.space.web.view.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

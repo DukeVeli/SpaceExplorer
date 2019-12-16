@@ -8,13 +8,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/user")
 public class UsersController {
+
     @GetMapping("/profile")
     public String getProfile() {
-        return "/user/profile.html";
+        return "/user/profile";
     }
 
     @PostMapping("/profile")
     public String postProfile() {
-        return "/user/profile.html";
+        return "/user/profile";
     }
 }

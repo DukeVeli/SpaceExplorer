@@ -10,8 +10,10 @@ public class BaseController {
     }
 
     protected String getPlanetName(HttpSession session) {
-        return ((LoginUserServiceModel) session.getAttribute("user")).getPlanetName();
+        return ((LoginUserServiceModel) session.getAttribute("planet")).getPlanetName();
     }
-
+ /*   protected String getAccount(HttpSession session) {
+        return ((LoginUserServiceModel) session.getAttribute("account")).getCreditCount();
+    }*/
 
 }

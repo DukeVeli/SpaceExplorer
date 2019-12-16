@@ -1,10 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>it works</title>
-</head>
-<body>
-        workwork
+<html   lang="en"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org">
+
+<th:block th:include="~{_shared/head}"/>
+
+    <body>
+    <th:block th:include="~{_shared/header}"/>
+
+<main>
+    <div class="container">
+        <h1> &#128640;</h1>
+        <h1> &#128640;&#128640;</h1>
+        <h1> &#128640;&#128640;&#128640;</h1>
+
+        <h1>Hello [[${session.username}]]!</h1>
+        <hr class="my-3"/>
+        <p class="h3"> You planet is [[${session.planet.getName()}]]. <a href="../planet/my_planet">Home Planet</a></p>
+        <p class="h3">You have [[${session.money.getCreditAmount()}]] Credits.  <a href="../account/manage">Credit Account</a></p>
+
+        <p class="h3">Good luck commander.</p>
+        <hr class="my-3"/>
+
+    </div>
+</main>
+<th:block th:include="~{_shared/footer}"/>
 </body>
 </html>

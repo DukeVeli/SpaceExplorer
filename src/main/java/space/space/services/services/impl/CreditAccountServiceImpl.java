@@ -1,12 +1,13 @@
 package space.space.services.services.impl;
 
 import lombok.AllArgsConstructor;
-import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import space.space.data.models.CreditAccount;
+import space.space.data.models.CreditType;
 import space.space.data.models.User;
 import space.space.data.repositories.CreditAccountRepository;
 import space.space.services.factories.CreditAccountFactory;
+import space.space.services.models.creditAccount.CreditAccountServiceModel;
 import space.space.services.services.CreditAccountService;
 
 @Service
@@ -23,5 +24,20 @@ public class CreditAccountServiceImpl implements CreditAccountService {
         CreditAccount account = factory.create();
         account.setUser(user);
         return creditAccountRepository.saveAndFlush(account);
+    }
+
+    @Override
+    public void add(CreditAccountServiceModel model, String username) {
+        double moneyToAdd =0;
+        CreditType type=model.getCreditType();
+        double money= model.getCreditAmount();
+        switch (type){
+            case BGN: moneyToAdd+=money; break;
+            case EUR: moneyToAdd+=money*2; break;
+            case USD: moneyToAdd+=money*1.5; break;
+        }
+        CreditAccount account = creditAccountRepository.getByUserUsername(username).get();
+        account.setCreditAmount(account.getCreditAmount()+moneyToAdd);
+        creditAccountRepository.saveAndFlush(account);
     }
 }
