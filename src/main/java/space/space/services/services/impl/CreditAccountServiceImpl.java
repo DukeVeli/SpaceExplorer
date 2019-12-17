@@ -16,9 +16,6 @@ public class CreditAccountServiceImpl implements CreditAccountService {
     private final CreditAccountRepository creditAccountRepository;
     private final CreditAccountFactory factory;
 
-
-
-
     @Override
     public CreditAccount create(User user) {
         CreditAccount account = factory.create();
@@ -27,14 +24,16 @@ public class CreditAccountServiceImpl implements CreditAccountService {
     }
 
     @Override
-    public void add(CreditAccountServiceModel model, String username) {
-        double moneyToAdd =0;
+    public void add(CreditAccountServiceModel model, String username) throws Exception {
+        long moneyToAdd =0;
         CreditType type=model.getCreditType();
-        double money= model.getCreditAmount();
+        long money= model.getCreditAmount();
+        if (money<0){throw new Exception("Can't add negative amount of money");}
+
         switch (type){
             case BGN: moneyToAdd+=money; break;
-            case EUR: moneyToAdd+=money*2; break;
-            case USD: moneyToAdd+=money*1.5; break;
+            case EUR: moneyToAdd+=money*3; break;
+            case USD: moneyToAdd+=money*2; break;
         }
         CreditAccount account = creditAccountRepository.getByUserUsername(username).get();
         account.setCreditAmount(account.getCreditAmount()+moneyToAdd);

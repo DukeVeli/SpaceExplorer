@@ -27,10 +27,9 @@ public class AuthServiceImpl implements AuthService {
     private final RoleRepository roleRepository;
 
     @Override
-    public void register(RegisterUserServiceModel model) {
+    public void register(RegisterUserServiceModel model) throws Exception {
         if (!authValidationService.isValid(model)) {
-            // do something
-            return;
+            throw new Exception("Registration form invalid");
         }
 
         User user = mapper.map(model, User.class);

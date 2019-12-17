@@ -16,5 +16,6 @@ public class PlanetServiceModel {
     private Planet planet;
     private PlanetSize size;
     private PlanetUpgrades upgrades;
-    private int incomePerTrip;
+    private long incomePerTrip;
+    private long rating;
 }

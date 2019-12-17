@@ -15,7 +15,7 @@ public class AuthValidationServiceImpl implements AuthValidationService {
 
     @Override
     public boolean isValid(RegisterUserServiceModel user) {
-        return this.isEmailValid(user.getEmail()) &&
+        return this.isEmailFree(user.getEmail()) &&
                 this.arePasswordsValid(user.getPassword(), user.getConfirmPassword()) &&
                 this.isUsernameFree(user.getUsername());
     }
@@ -28,7 +28,7 @@ public class AuthValidationServiceImpl implements AuthValidationService {
         return !userRepository.existsByUsername(username);
     }
 
-    private boolean isEmailValid(String email) {
-        return true;
+    private boolean isEmailFree(String email) {
+        return !userRepository.existsByEmail(email);
     }
 }

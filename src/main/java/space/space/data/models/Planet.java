@@ -26,10 +26,10 @@ public class Planet extends BaseEntity {
     private PlanetUpgrades upgrades;
 
     @Column
-    private int incomePerTrip;
+    private long incomePerTrip;
 
     @Column
-    private int rating=0;
+    private long rating=0;
 
     @OneToOne
     @JoinColumn(name = "user_id")

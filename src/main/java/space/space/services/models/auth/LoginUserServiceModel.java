@@ -12,7 +12,7 @@ import lombok.Setter;
 public class LoginUserServiceModel {
     private String username;
     private String planetName;
-    private double CreditCount;
+    private long creditCount;
 
     public LoginUserServiceModel(String username, String planetName) {
         this.username = username;

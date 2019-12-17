@@ -16,7 +16,7 @@ public class CreditAccount extends BaseEntity {
     private long id;
 
     @Column()
-    private double creditAmount;
+    private long creditAmount;
 
     @Enumerated(EnumType.STRING)
     @Column

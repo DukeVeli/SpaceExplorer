@@ -14,20 +14,21 @@
 
         <p class="h3">
         <h2>Planet Name [[${session.planet.getName()}]]!</h2>
-        <h3> &#128640;</h3>
-        <p class="h3">Planet Size [[${session.planet.getSize().toString()}]]!</p>
+        <h2>Your balance is [[${session.money.getCreditAmount()}]] credits.</h2>
+
+        <p class="h3">Planet Size [[${session.planet.getSize().toString().toLowerCase()}]]!</p>
         <p class="h3">
         <th:block th:switch="${session.planet.getSize().toString()}">
             <img th:case="'SMALL'" src="../../img/planet/SMALL.jpg" alt="small"
                  class="align-middle" width="60"/>
             <img th:case="'MEDIUM'" src="../../img/planet/MEDIUM.jpg" alt="medium"
-                 class="align-middle"width="75"/>
+                 class="align-middle" width="75"/>
             <img th:case="'LARGE'" src="../../img/planet/LARGE.jpg" alt="LARGE"
-                 class="align-middle"width="90"/>
+                 class="align-middle" width="90"/>
             <img th:case="'HUGE'" src="../../img/planet/HUGE.jpg" alt="HUGE"
-                 class="align-middle"width="105"/>
+                 class="align-middle" width="105"/>
             <img th:case="'ENORMOUS'" src="../../img/planet/ENORMOUS.jpg" alt="ENORMOUS"
-                 class="align-middle"width="120"/>
+                 class="align-middle" width="120"/>
         </th:block>
             <th:block th:unless="${session.planet.getSize().toString().equals('ENORMOUS')}">
         <a class="btn btn-success" th:href="@{/planet/my_planet/sizeUp}"> Upgrade</a>to next size. Cost 100000.
@@ -51,7 +52,8 @@
 
         <p class="h3">
         <p class="h5">Good luck commander.
-    Base income is 100. Upgrading planet size doubles base income. Upgrading planet level adds 50 income. Each rating point add 1 credit per trip</p>
+    Base income is 100. Upgrading planet size doubles base income. Upgrading planet level adds 50 income. Each rating point add 1 credit per trip. When traveling to
+    other planets, your planet and the visited one gets 1 rating point</p>
         <h3> &#128640;</h3>
 
     </div>

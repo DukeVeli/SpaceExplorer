@@ -26,26 +26,6 @@ public class UsersServiceImpl implements UsersService {
     private final CreditAccountRepository creditAccountRepository;
     private final ModelMapper mapper;
 
-    /*@Override
-    public void createPlanetForUser(String username, Planet planet) throws Exception {
-        User user = usersRepository.findByUsername(username);
-        Planet planet = mapper.map(planetService.create(.getName()),Planet.class);
-        *//*planet.setUser(user);
-        planetRepository.saveAndFlush(planet);*//*
-        user.setPlanet(planet);
-        usersRepository.saveAndFlush(user);
-    }*/
-
-    /*@Override
-    public void createAccountForUser(String username) throws Exception {
-        User user = usersRepository.findByUsername(username);
-        CreditAccount account = creditAccountService.create();
-      *//* account.setUser(user);
-       creditAccountRepository.saveAndFlush(account);*//*
-        user.setCreditAccount(account);
-        usersRepository.saveAndFlush(user);
-    }*/
-
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
         User user = userRepository.findByUsername(s);
@@ -60,7 +40,7 @@ public class UsersServiceImpl implements UsersService {
     }
 
     @Override
-    public void spendMoney(String username, double spentPot) throws Exception {
+    public void spendMoney(String username, long spentPot) throws Exception {
         Optional<CreditAccount> optionalCreditAccount= creditAccountRepository.getByUserUsername(username);
        if (optionalCreditAccount.isEmpty()) {
            throw new Exception("No such Username");
@@ -71,7 +51,7 @@ public class UsersServiceImpl implements UsersService {
     }
 
     @Override
-    public void earnMoney(String username, double spentPot) throws Exception {
+    public void earnMoney(String username, long spentPot) throws Exception {
         Optional<CreditAccount> optionalCreditAccount= creditAccountRepository.getByUserUsername(username);
         if (optionalCreditAccount.isEmpty()) {
             throw new Exception("No such Username");

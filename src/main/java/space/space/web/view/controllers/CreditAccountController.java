@@ -29,7 +29,7 @@ public class CreditAccountController extends BaseController {
     }
 
     @PostMapping("/add")
-    public String addCredits(@ModelAttribute CreditAddModel model,HttpSession session) {
+    public String addCredits(@ModelAttribute CreditAddModel model,HttpSession session) throws Exception {
         CreditAccountServiceModel mod = mapper.map(model,CreditAccountServiceModel.class);
         String username = getUsername(session);
         creditAccountService.add(mod,username);

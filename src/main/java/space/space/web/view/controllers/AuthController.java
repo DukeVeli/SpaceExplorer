@@ -13,7 +13,6 @@ import space.space.services.models.auth.RegisterUserServiceModel;
 import space.space.services.services.AuthService;
 import space.space.web.view.models.RegisterUserModel;
 
-import javax.transaction.Transactional;
 import javax.validation.Valid;
 
 @Controller
@@ -41,7 +40,7 @@ public class AuthController {
 
 
     @PostMapping("/auth/register")
-    public String register(@Valid @ModelAttribute RegisterUserModel model, BindingResult bindingResult) {
+    public String register(@Valid @ModelAttribute RegisterUserModel model, BindingResult bindingResult) throws Exception {
         if (bindingResult.hasErrors()) {
             return "auth/register";
         }

@@ -19,7 +19,9 @@
 
                     <img th:src="@{'../../img/planet/' +${planet.getSize()} + '.jpg'}" width="100">
                     <h2 class="text-white" th:text="${planet.getName()}"></h2>
-                    <a class="btn btn-secondary" th:href="@{'/planet/travel/' + ${planet.getId()}}">Travel</a>
+                    <h5 class="text-white" th:text="${planet.getRating()} + ' rating'"></h5>
+                    <h5 class="text-white" th:text="${planet.getIncomePerTrip()} + ' trip cost'"></h5>
+                    <a class="btn btn-primary" th:href="@{'/planet/travel/' + ${planet.getId()}}">Travel</a>
                 </div>
             </div>
         </th:block>

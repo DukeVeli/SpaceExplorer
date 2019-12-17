@@ -10,4 +10,5 @@ public interface PlanetRepository extends JpaRepository<Planet, Long> {
     Optional<Planet> getByNameIgnoreCase(String name);
 
     Optional<Planet> getByUserUsername(String username);
+    Optional<Planet> getById(long id);
 }

@@ -8,7 +8,7 @@ public interface CreditAccountService {
 
     CreditAccount create(User user);
 
-    void add(CreditAccountServiceModel model, String username);
+    void add(CreditAccountServiceModel model, String username) throws Exception;
 
 
 }

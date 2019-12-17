@@ -31,8 +31,7 @@ public class InitialDataLoader implements
     @Transactional
     public void onApplicationEvent(ContextRefreshedEvent event) {
 
-        if (alreadySetup)
-            return;
+        if (alreadySetup) return;
 
         createRoleIfNotFound(ROLE_ROOT.toString());
         createRoleIfNotFound(ROLE_ADMIN.toString());
@@ -43,7 +42,6 @@ public class InitialDataLoader implements
 
     @Transactional
     Role createRoleIfNotFound(String name) {
-
         Role role = roleRepository.findByAuthority(name);
         if (role == null) {
             role = new Role();
