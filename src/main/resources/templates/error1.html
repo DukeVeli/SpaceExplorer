@@ -13,18 +13,11 @@
         <h1>  	&#128640;&#128640;</h1>
         <h1>  	&#128640;&#128640;&#128640;</h1>
 
-        <th:block th:if="${session.username == null}">
-        <h1>Hello Explorer!</h1>
+        <th:block >
+            <h1>ERROR ERROR!</h1>
         </th:block>
-        <th:block th:unless="${session.username == null}">
-            <h1>Hello [[${session.username}]]!</h1>
-        </th:block>
-        <hr class="my-3"/>
-        <p class="h4">          Welcome to Space.</p>
-        <p class="h4">Here you can explore the Solar System.</p>
-        <p class="h4">Or you can create your own planets and travel to other create before.</p>
-        <p class="h4">Good luck commander.</p>
-        <hr class="my-3"/>
+        <h2 th:text="'Error name: '+ ${message.toString()} +'!'"> </h2>
+
         <h3><a href="/explore/home">Explore</a> the Solar System</h3>
 
         <th:block th:if="${session.username == null}">

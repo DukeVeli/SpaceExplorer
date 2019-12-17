@@ -6,7 +6,6 @@ import lombok.Setter;
 import space.space.data.models.base.BaseEntity;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Getter
 @Setter

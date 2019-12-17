@@ -9,6 +9,7 @@ import space.space.data.models.PlanetUpgrades;
 import space.space.data.models.User;
 import space.space.data.repositories.PlanetRepository;
 import space.space.data.repositories.UserRepository;
+import space.space.errors.NemashKintiBraatException;
 import space.space.services.factories.PlanetFactory;
 import space.space.services.models.planets.PlanetServiceModel;
 import space.space.services.services.PlanetService;
@@ -85,7 +86,7 @@ public class PlanetServiceImpl implements PlanetService {
         long moneyPerTravel = otherPlanet.getIncomePerTrip();
         long myMoney = myUser.getCreditAccount().getCreditAmount();
         long hisMoney = otherUser.getCreditAccount().getCreditAmount();
-        if (myMoney<moneyPerTravel){throw new Exception("Nemash kinti braat!");}
+        if (myMoney<moneyPerTravel){throw new NemashKintiBraatException("Nemash kinti braat!");}
 
         otherPlanet.setRating(otherPlanet.getRating()+1);
         otherPlanet.setIncomePerTrip(otherPlanet.getIncomePerTrip()+1);
@@ -140,7 +141,7 @@ public class PlanetServiceImpl implements PlanetService {
         }
         Planet planet = oPlanet.get();
         if (!checkBalance(username, 100000)) {
-            throw new Exception("nemash kinti braat");
+            throw new NemashKintiBraatException("nemash kinti braat");
         }
         sizeUpPlanet(planet);
         usersService.spendMoney(username, 100000);
@@ -156,7 +157,7 @@ public class PlanetServiceImpl implements PlanetService {
         Planet planet = oPlanet.get();
 
         if (!checkBalance(username, 50000)) {
-            throw new Exception("Not enough Credits!");
+            throw new NemashKintiBraatException("Not enough Credits!");
         }
         levelUpPlanet(planet);
         usersService.spendMoney(username, 50000);

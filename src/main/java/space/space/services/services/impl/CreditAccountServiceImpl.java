@@ -7,13 +7,18 @@ import space.space.data.models.CreditType;
 import space.space.data.models.User;
 import space.space.data.repositories.CreditAccountRepository;
 import space.space.services.factories.CreditAccountFactory;
+import space.space.services.models.LogServiceModel;
 import space.space.services.models.creditAccount.CreditAccountServiceModel;
 import space.space.services.services.CreditAccountService;
+import space.space.services.services.LogService;
+
+import java.time.LocalDateTime;
 
 @Service
 @AllArgsConstructor
 public class CreditAccountServiceImpl implements CreditAccountService {
     private final CreditAccountRepository creditAccountRepository;
+    private final LogService logService;
     private final CreditAccountFactory factory;
 
     @Override
@@ -38,5 +43,11 @@ public class CreditAccountServiceImpl implements CreditAccountService {
         CreditAccount account = creditAccountRepository.getByUserUsername(username).get();
         account.setCreditAmount(account.getCreditAmount()+moneyToAdd);
         creditAccountRepository.saveAndFlush(account);
+
+        LogServiceModel logServiceModel = new LogServiceModel();
+        logServiceModel.setUsername(username);
+        logServiceModel.setDescription("Added "+money+" type "+type);
+        logServiceModel.setTime(LocalDateTime.now());
+        logService.saveMoneyLog(logServiceModel);
     }
 }

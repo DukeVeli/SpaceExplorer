@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import space.space.data.models.User;
 import space.space.data.repositories.RoleRepository;
 import space.space.data.repositories.UserRepository;
+import space.space.errors.RegistrationFormError;
 import space.space.services.models.auth.LoginUserServiceModel;
 import space.space.services.models.auth.RegisterUserServiceModel;
 import space.space.services.services.*;
@@ -29,7 +30,7 @@ public class AuthServiceImpl implements AuthService {
     @Override
     public void register(RegisterUserServiceModel model) throws Exception {
         if (!authValidationService.isValid(model)) {
-            throw new Exception("Registration form invalid");
+            throw new RegistrationFormError("Registration form invalid");
         }
 
         User user = mapper.map(model, User.class);
@@ -39,18 +40,6 @@ public class AuthServiceImpl implements AuthService {
         user = userRepository.saveAndFlush(user);
         planetService.create(model.getPlanetName(),user);
         creditAccountService.create(user);
-
-       /* try {
-            usersService.createAccountForUser(user.getUsername());
-        } catch (Exception e) {e.printStackTrace();
-            */
-
-       /* try {
-            usersService.createPlanetForUser(user.getUsername(),planetService.create(model.getPlanetName()));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }*/
-
 
     }
 
