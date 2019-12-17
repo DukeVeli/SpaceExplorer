@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<th:block th:include="~{_shared/head}"/>
+
+<body>
+<th:block th:include="~{_shared/header}"/>
+
+<main>
+    <div class="container">
+        <h1> &#128640;</h1>
+        <h1> &#128640;&#128640;</h1>
+        <h1> &#128640;&#128640;&#128640;</h1>
+
+        <h1>AdminTab</h1>
+        <p class="h3">Return to <a href="/user/profile">Profile</a></p>
+        <h1>&#128640;</h1>
+
+        <th:block>
+
+            <div class="row" th:each="user : ${admins}">
+                <h4 class="text-white" th:text="${'User '+user.getUsername() +' is Admin  '}"></h4>
+
+                <div sec:authorize="hasRole('ROLE_ROOT')">
+                    <a class="btn btn-outline-primary" th:href="@{'/user/admin_tabD/' + ${user.getId()}}">Demote</a>
+                </div>
+            </div>
+
+            <h1>&#128640;</h1>
+
+            <div class="row" th:each="user : ${users}">
+                <h4 class="text-white" th:text="${'User '+user.getUsername()+' is not Admin  '}"></h4>
+                <a class="btn btn-outline-primary" th:href="@{'/user/admin_tab/' + ${user.getId()}}">Promote</a>
+            </div>
+
+        </th:block>
+
+    </div>
+</main>
+<th:block th:include="~{_shared/footer}"/>
+</body>
+</html>

@@ -6,4 +6,5 @@ import space.space.data.models.Role;
 
 public interface RoleRepository extends JpaRepository<Role, Long> {
     Role findByAuthority(String role);
+
 }

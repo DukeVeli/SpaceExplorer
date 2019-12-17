@@ -16,7 +16,6 @@
         <th:block >
             <div class="row">
                   <div class="col" th:each="planet : ${planets}">
-
                     <img th:src="@{'../../img/planet/' +${planet.getSize()} + '.jpg'}" width="100">
                     <h2 class="text-white" th:text="${planet.getName()}"></h2>
                     <h5 class="text-white" th:text="${planet.getRating()} + ' rating'"></h5>

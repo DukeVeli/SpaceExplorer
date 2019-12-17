@@ -48,6 +48,6 @@ public class CreditAccountServiceImpl implements CreditAccountService {
         logServiceModel.setUsername(username);
         logServiceModel.setDescription("Added "+money+" type "+type);
         logServiceModel.setTime(LocalDateTime.now());
-        logService.saveMoneyLog(logServiceModel);
+        logService.saveLog(logServiceModel);
     }
 }

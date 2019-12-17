@@ -15,7 +15,7 @@ public class LogServiceImpl implements LogService {
     private final ModelMapper modelMapper;
 
     @Override
-    public LogServiceModel saveMoneyLog(LogServiceModel logServiceModel) {
+    public LogServiceModel saveLog(LogServiceModel logServiceModel) {
         Log log = this.modelMapper.map(logServiceModel, Log.class);
         return this.modelMapper.map(this.logRepository.saveAndFlush(log),LogServiceModel.class);
     }

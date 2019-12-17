@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html   lang="en"
         xmlns="http://www.w3.org/1999/xhtml"
-        xmlns:th="http://www.thymeleaf.org">
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <th:block th:include="~{_shared/head}"/>
 
@@ -15,12 +16,19 @@
         <h1> &#128640;&#128640;&#128640;</h1>
 
         <h1>Hello [[${session.username}]]!</h1>
-        <hr class="my-3"/>
+
         <p class="h3"> You planet is [[${session.planet.getName()}]]. <a href="/planet/my_planet">Home Planet</a></p>
         <p class="h3">You have [[${session.money.getCreditAmount()}]] Credits.  <a href="/account/manage">Credit Account</a></p>
 
         <p class="h3">Good luck commander.</p>
-        <hr class="my-3"/>
+
+        <div sec:authorize="hasRole('ROLE_ADMIN')">
+            <h1>
+            <a class="nav-link" th:href="@{/user/admin_tab}">Admin Tab</a>
+                </h1>
+        </div>
+
+
 
     </div>
 </main>
