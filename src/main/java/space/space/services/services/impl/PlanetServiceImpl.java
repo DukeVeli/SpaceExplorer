@@ -101,11 +101,7 @@ public class PlanetServiceImpl implements PlanetService {
         planetRepository.saveAndFlush(otherPlanet);
         userRepository.saveAndFlush(myUser);
         userRepository.saveAndFlush(otherUser);
-
     }
-
-
-
 
     @Override
     public boolean checkBalance(String username, long baseCost) {

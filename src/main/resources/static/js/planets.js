@@ -8,10 +8,11 @@ const loader = {
 };
 
 const URLS = {
-    planet: '/api/planet',
+    planets: '/api/planets',
 };
 
-const toString = ({ id, name, planet, size, upgrades, incomePerTrip, rating }) => {
+const toString = ({id, name, planet, size, upgrades, incomePerTrip, rating }) => {
+
     let columns = `
     <td>${name}</td>
     <td>${planet}</td>
@@ -19,24 +20,21 @@ const toString = ({ id, name, planet, size, upgrades, incomePerTrip, rating }) =
     <td>${upgrades}</td>
     <td>${incomePerTrip}</td>
     <td>${rating}</td>
-    
+    <td></td>
+    <td>
+       <form class="rate-planet-form" data-id=${id} action="/api/planet/add-rating-user/${id}" method="post">
+           <button class="btn btn-info">Rate</button>
+       </form>
+           </td>
 `
-    columns += rating
-        ? '<td></td>'
-        : `<td>
-            <form class="rate-planet-form" data-id=${planet.id} action="/api/planet/add-rating-user/${planet.id}" method="post">
-                <button class="btn btn-info">Rate</button>
-            </form>
-           </td>`
-    return `<tr>${columns}</tr>`
 };
 
 loader.show();
-fetch(URLS.planet)
-    .then(response => response.json())
-    .then(planet => {
+fetch(URLS.planets)
+    .then(response => console.log(response) ||response.json())
+    .then(planets => {
         let result = '';
-        planet.forEach(planet => {
+        planets.forEach(planet => {
             const planetString = toString(planet);
             result += planetString;
         });
