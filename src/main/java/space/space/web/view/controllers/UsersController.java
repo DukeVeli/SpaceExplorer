@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import space.space.services.models.auth.UserServiceModel;
 import space.space.services.services.UsersService;
+import space.space.web.interceptor.PageTitle;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -25,6 +26,7 @@ public class UsersController {
     private final ModelMapper mapper;
 
     @GetMapping("/profile")
+    @PageTitle("Profile")
     public String getProfile() {
         return "/user/profile";
     }

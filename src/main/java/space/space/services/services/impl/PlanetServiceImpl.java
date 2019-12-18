@@ -201,4 +201,19 @@ public class PlanetServiceImpl implements PlanetService {
     public boolean areTherePlanets() {
         return planetRepository.count() > 1;
     }
+
+
+    @Override
+    public void rateUpPlanet(String username) {
+        Planet planet =planetRepository.getByUserUsername(username).get();
+        planet.setRating(planet.getRating()+1);
+        planetRepository.saveAndFlush(planet);
+    }
+
+    @Override
+    public List<PlanetServiceModel> getAll() {
+        return planetRepository.findAll().stream()
+                .map(planet -> mapper.map(planet, PlanetServiceModel.class))
+                .collect(Collectors.toList());
+    }
 }

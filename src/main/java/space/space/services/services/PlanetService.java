@@ -5,6 +5,7 @@ import space.space.data.models.User;
 import space.space.services.models.planets.PlanetServiceModel;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface PlanetService {
 
@@ -27,6 +28,9 @@ public interface PlanetService {
     void buySizeUp(String username) throws Exception;
     void buyLevelUp(String username) throws Exception;
 
+    void rateUpPlanet(String username);
 
     boolean areTherePlanets();
+
+    List<PlanetServiceModel> getAll();
 }
