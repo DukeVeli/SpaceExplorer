@@ -29,16 +29,6 @@ textarea {
     resize: none;
 }
 
-/*#navbarNav {
-    overflow: hidden;
-    background-color: transparent;
-    padding: 10px 0px; !* Large padding which will shrink on scroll (using JS) *!
-    transition: 0.4s; !* Adds a transition effect when the padding is decreased *!
-    position: fixed; !* Sticky/fixed navbar *!
-    width: 90%;
-    top: 0; !* At the top *!
-    z-index: 99;
-}*/
 
 footer {
     position:fixed;

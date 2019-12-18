@@ -13,6 +13,8 @@ import space.space.services.services.CreditAccountService;
 import space.space.services.services.LogService;
 
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -50,4 +52,20 @@ public class CreditAccountServiceImpl implements CreditAccountService {
         logServiceModel.setTime(LocalDateTime.now());
         logService.saveLog(logServiceModel);
     }
+
+    @Override
+    public void addDailyCredit() {
+        List<CreditAccount> creditAccounts = creditAccountRepository.findAll()
+                .stream()
+                .map(this::addTenCredits)
+                .collect(Collectors.toList());
+        creditAccountRepository.saveAll(creditAccounts);
+    }
+
+    private CreditAccount  addTenCredits(CreditAccount creditAccount) {
+        creditAccount.setCreditAmount(creditAccount.getCreditAmount()+10);
+        return creditAccount;
+    }
+
+
 }

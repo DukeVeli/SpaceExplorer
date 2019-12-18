@@ -5,4 +5,6 @@ import space.space.services.models.LogServiceModel;
 public interface LogService {
 
     LogServiceModel saveLog(LogServiceModel logServiceModel);
+
+    void clearLogBefore6m();
 }

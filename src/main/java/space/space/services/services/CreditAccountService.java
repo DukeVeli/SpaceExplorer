@@ -11,4 +11,5 @@ public interface CreditAccountService {
     void add(CreditAccountServiceModel model, String username) throws Exception;
 
 
+    void addDailyCredit();
 }
