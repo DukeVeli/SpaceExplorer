@@ -10,13 +10,12 @@
 <th:block th:include="~{_shared/header}"/>
 
 <main class="container">
-    <h1 class="text-center">Merchant</h1>
+    <h1 class="text-center">Planets</h1>
     <hr class="hr-3"/>
     <table class="table bg-blur">
         <thead>
         <tr>
             <th scope="col" class="font-weight-bold">Name</th>
-            <th scope="col">planet</th>
             <th scope="col">size</th>
             <th scope="col">upgrades</th>
             <th scope="col">incomePerTrip</th>
@@ -24,19 +23,18 @@
             <th scope="col"></th>
         </tr>
         </thead>
-        <tbody id="planet-table">
+        <tbody id="planets-table">
         </tbody>
     </table>
 </main>
 <th:block th:include="~{_shared/footer}" />
 <!--<th:block th:include="~{_shared/loader}" />-->
 
-<script
-        src="https://code.jquery.com/jquery-3.4.1.js"
+<script src="https://code.jquery.com/jquery-3.4.1.js"
         integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
         crossorigin="anonymous"></script>
 
-<script src="/js/planets.js"></script>
+<script src="/static/js/planets.js"></script>
 
 </body>
 </html>

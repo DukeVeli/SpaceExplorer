@@ -2,10 +2,9 @@ package space.space.web.view.controllers.api;
 
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 import space.space.services.services.PlanetService;
 import space.space.web.base.BaseController;
 
@@ -22,15 +21,14 @@ public class PlanetsApiController extends BaseController {
     private final ModelMapper mapper;
 
     @GetMapping(value = "/api/planets")
-    public List<PlanetResponseModel> getPlanet() {
+     public ResponseEntity<List<PlanetResponseModel>> getPlanetsToRate() {
                List<PlanetResponseModel> result = planetService.getAll()
                 .stream()
                 .map(planet -> mapper.map(planet, PlanetResponseModel.class))
                 .collect(Collectors.toList());
-        System.out.println();
-        return  result;
-    }
 
+        return new ResponseEntity<>(result, HttpStatus.OK) ;
+    }
 
     @PostMapping("/api/planet/add-rating-user/{id}")
     public void ratePlanet(@PathVariable long id, HttpSession session, HttpServletResponse response) throws IOException {
